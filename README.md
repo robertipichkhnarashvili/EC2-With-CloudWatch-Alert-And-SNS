@@ -15,12 +15,16 @@ CloudWatch Alarms: Configured to trigger when CPU utilization exceeds a defined 
 SNS Notifications: Integrated with CloudWatch alarms to send email notifications when thresholds are breached.
 
 
-To use this project run(have terraform and git preinstalled and git):
+To use this project run(have git preinstalled):
 
 1. git init
 
 2. git clone <repository_url>
 
-3. terraform init
 
-4. terraform apply
+Afterwards, configure the file the way you want to, follow documentation in variables.tf to fill out the variables on your need, and also include your own key.pem to access the instance via SSH, afterwards you can run
+
+
+3.terraform init
+
+4.terraform apply
