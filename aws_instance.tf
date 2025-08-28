@@ -5,7 +5,7 @@ module "my_instance" {
   instance_type = var.instance_type
   # Include key.pem in your working directory
   private_key = file("./key.pem")
-  key_name = "linux_key"
+  key_name = "key"
   user_data = <<-EOF
     #!/bin/bash
     sudo yum update -y
