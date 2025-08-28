@@ -1,7 +1,7 @@
 .terraform
 private_key.pem
 windows_key.ppk
-text.text
+text.txt
 terraform.tfstate
 terraform.tfstate.backup
 linux_key.pem
