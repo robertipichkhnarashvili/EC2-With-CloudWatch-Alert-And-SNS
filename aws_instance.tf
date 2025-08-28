@@ -3,7 +3,8 @@ module "my_instance" {
   source = "./module-1/"
   subnet_id = aws_subnet.public.id
   instance_type = var.instance_type
-  private_key = file("./linux_key.pem")
+  # Include key.pem in your working directory
+  private_key = file("./key.pem")
   key_name = "linux_key"
   user_data = <<-EOF
     #!/bin/bash
