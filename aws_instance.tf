@@ -5,7 +5,7 @@ module "my_instance" {
   instance_type = var.instance_type
   private_key = file("./linux_key.pem")
   key_name = "linux_key"
-user_data = <<-EOF
+  user_data = <<-EOF
     #!/bin/bash
     sudo yum update -y
     sudo yum install -y amazon-cloudwatch-agent
@@ -28,6 +28,7 @@ user_data = <<-EOF
           "cpu_usage_system"
         ],
         "metrics_collection_interval": 60,
+        "resources" : ["*"],
         "totalcpu": true
       },
       "mem": {
@@ -56,6 +57,7 @@ EOL
         -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s
 
     sudo systemctl enable amazon-cloudwatch-agent
+    sudo systemctl start amazon-cloudwatch-agent
 EOF
 
   iam_instance_profile = aws_iam_instance_profile.cloudwatch_profile.name

@@ -2,19 +2,19 @@
 
 resource "aws_cloudwatch_metric_alarm" "cloudwatch" {
   alarm_name = "terraform-alarm"
-  comparison_operator = "GreaterThanTreshold"
+  comparison_operator = "GreaterThanThreshold"
   evaluation_periods = 2
   metric_name = "CPUUtilization"
   period = 60
   statistic = "Average"
-  namespace = "CWAgent_alarm/EC2"
+  namespace = "AWS/EC2"
   threshold = var.default_CPU_treshold
   alarm_description = "This metric monitors EC2's CPU Utilization"
 
 # Connecting SNS to cloudwatch
   alarm_actions = [aws_sns_topic.sns_cloudwatch.arn]
   dimensions = {
-    Instance_Id = module.my_instance.instance_id
+    InstanceId = module.my_instance.instance_id[0]
   }
 }
 
